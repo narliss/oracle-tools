@@ -3,7 +3,7 @@
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * The contents of this file are subject to the terms and conditions of
+ * The contents of this file are subject to the terms and conditions of 
  * the Common Development and Distribution License 1.0 (the "License").
  *
  * You may not use this file except in compliance with the License.
@@ -187,7 +187,7 @@ public class NativeJavaApplicationBuilder<A extends JavaApplication<A>, S extend
         {
             String propertyValue = systemProperties.getProperty(propertyName);
 
-            builder.command().add("-D" + propertyName + (propertyValue.isEmpty() ? "" : "=" + sanitizeProperty(propertyValue)));
+            builder.command().add("-D" + propertyName + (propertyValue.isEmpty() ? "" : "=" + propertyValue));
         }
 
         // set the JVM options for the Process
@@ -259,16 +259,5 @@ public class NativeJavaApplicationBuilder<A extends JavaApplication<A>, S extend
         {
             super(process);
         }
-    }
-
-    private String sanitizeProperty(String sProp)
-    {
-        String sResult = sProp;
-        if (sResult.contains(" "))
-        {
-            sResult = sResult.trim();
-            sResult = "\"" + sProp + "\"";
-        }
-        return sResult;
     }
 }
