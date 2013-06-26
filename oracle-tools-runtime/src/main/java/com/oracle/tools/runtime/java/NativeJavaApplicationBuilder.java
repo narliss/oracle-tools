@@ -263,7 +263,7 @@ public class NativeJavaApplicationBuilder<A extends JavaApplication<A>, S extend
 
     private String sanitizeProperty(String sProp)
     {
-        String sResult = unquote(sProp);
+        String sResult = sProp;
         if (sResult.contains(" "))
         {
             sResult = sResult.trim();
@@ -271,28 +271,4 @@ public class NativeJavaApplicationBuilder<A extends JavaApplication<A>, S extend
         }
         return sResult;
     }
-
-    private static String unquote(String string)
-        {
-            if (string == null)
-            {
-                return null;
-            }
-            else
-            {
-                StringBuilder builder = new StringBuilder();
-
-                for (int i = 0; i < string.length(); i++)
-                {
-                    char c = string.charAt(i);
-
-                    if (c != '\"' && c != '\'' && c != '`')
-                    {
-                        builder.append(c);
-                    }
-                }
-
-                return builder.toString();
-            }
-        }
 }
