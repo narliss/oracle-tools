@@ -263,10 +263,9 @@ public class NativeJavaApplicationBuilder<A extends JavaApplication<A>, S extend
 
     private String sanitizeProperty(String sProp)
     {
-        String sResult = sProp;
+        String sResult = unquote(sProp);
         if (sResult.contains(" "))
         {
-            sResult = unquote(sResult);
             sResult = sResult.trim();
             sResult = "\"" + sProp + "\"";
         }
